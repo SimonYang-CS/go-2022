@@ -6,9 +6,18 @@ import (
 	"time"
 )
 
+var once sync.Once
+
+func initSteps() {
+	once.Do(func() {
+		fmt.Println("init")
+	})
+}
+
 func step1(wg *sync.WaitGroup) {
 	defer wg.Done()
 
+	initSteps()
 	fmt.Println("Step1 Sleep 1s")
 	time.Sleep(time.Second)
 	fmt.Println("Step1 done")
@@ -17,6 +26,7 @@ func step1(wg *sync.WaitGroup) {
 func step2(wg *sync.WaitGroup) {
 	defer wg.Done()
 
+	initSteps()
 	fmt.Println("Step2 Sleep 3s")
 	time.Sleep(3 * time.Second)
 	fmt.Println("step2 done")
@@ -25,6 +35,7 @@ func step2(wg *sync.WaitGroup) {
 func step3(wg *sync.WaitGroup) {
 	defer wg.Done()
 
+	initSteps()
 	fmt.Println("Step3 Sleep 2s")
 	time.Sleep(2 * time.Second)
 	fmt.Println("step3 done")
