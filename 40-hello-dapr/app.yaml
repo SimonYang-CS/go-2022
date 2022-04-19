@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-dapr
+  namespace: demo
+  labels:
+    app: hello-dapr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-dapr
+  template:
+    metadata:
+      labels:
+        app: hello-dapr
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "hello-dapr"
+    spec:
+      containers:
+        - name: main
+          image: hello-dapr:1.0
