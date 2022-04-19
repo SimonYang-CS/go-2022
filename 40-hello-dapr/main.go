@@ -55,4 +55,5 @@ func main() {
 
 	log.Println("Press any key to continue: ")
 	fmt.Scanln()
+	log.Println("exit now ... ")
 }
