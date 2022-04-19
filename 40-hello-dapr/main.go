@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-//test
 func main() {
 	var DAPR_HOST, DAPR_HTTP_PORT string
 	var okHost, okPort bool
